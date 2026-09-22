@@ -23,6 +23,7 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
     let variants = self.entries.iter().map(|entry| entry.get_shader_variant());
 
     quote! {
+      #[allow(dead_code)]
       #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
       pub enum ShaderEntry {
         #( #variants, )*
