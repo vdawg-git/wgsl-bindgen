@@ -255,6 +255,7 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
     };
 
     quote! {
+      #[allow(dead_code)]
       impl ShaderEntry {
         #create_pipeline_layout_fn
         #(#create_shader_module_fns)*
