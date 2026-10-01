@@ -43,6 +43,7 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
     });
 
     quote! {
+      #[allow(dead_code)]
       pub fn create_pipeline_layout(&self, device: &wgpu::Device) -> wgpu::PipelineLayout {
         match self {
           #( #match_arms, )*
@@ -71,6 +72,7 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
         });
 
         quote! {
+          #[allow(dead_code)]
           pub fn #fn_name(&self, #param_defs) -> #return_type
           {
             match self {
@@ -92,6 +94,7 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
         });
 
         quote! {
+          #[allow(dead_code)]
           pub fn #fn_name(&self, #param_defs) -> #return_type {
             match self {
               #( #match_arms, )*
@@ -255,7 +258,6 @@ impl<'a, 'b> ShaderEntryBuilder<'a, 'b> {
     };
 
     quote! {
-      #[allow(dead_code)]
       impl ShaderEntry {
         #create_pipeline_layout_fn
         #(#create_shader_module_fns)*
